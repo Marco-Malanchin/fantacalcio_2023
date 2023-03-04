@@ -75,56 +75,6 @@ class User extends BaseController
         $result = $this->conn->query($sql);
         return $result;
     }
-
-    public function ResetPassword($email)
-    {
-        $date = date("d:m:Y h:i:s");
-
-        // Generazione della password randomica
-        $password = bin2hex(openssl_random_pseudo_bytes(4));
-
-        // Update password con password temporanea
-        $sql = sprintf(
-            "UPDATE `user`
-        SET password = '%s'
-        where email = '%s'",
-            $this->conn->real_escape_string($password),
-            $this->conn->real_escape_string($email)
-        );
-
-        $result = $this->conn->query($sql);
-
-        //echo json_encode(["message" => $result]);
-
-        if ($result == false) {
-            http_response_code(503);
-            echo json_encode(["message" => "Couldn't upload the password"]);
-            return $result;
-        }
-
-
-        $this->SendEmail($email, $password);
-
-        $result = null;
-
-        $result = $this->getUserFromEmail($this->conn->real_escape_string($email));
-
-        unset($sql);
-
-        while ($row = $result->fetch_assoc()) {
-            //Aggiunge alla tabella reset 
-            $sql = sprintf(
-                "INSERT INTO reset
-                (user, password, completed)
-                VALUES ('%s', '%s', 0)",
-                $this->conn->real_escape_string($row['id']),
-                $this->conn->real_escape_string($password)
-            );
-            //$this->conn->real_escape_string(date("d:m:Y h:i:s", strtotime($date . '+ 5 Days'))) sistemare
-        }
-        return $password;
-    }
-
     public function login($email, $password)
     {
         $sql = sprintf("SELECT email, password, id
@@ -159,15 +109,13 @@ class User extends BaseController
 
         return $result;
     }
-
-    public function registration($name, $surname, $email, $password)
+    public function registration($nickname, $email, $password)
     {
 
         $sql = sprintf(
-            "INSERT INTO user (name , surname, email, password, active)
-        VALUES ('%s', '%s', '%s', '%s', 1)",
-            $this->conn->real_escape_string($name),
-            $this->conn->real_escape_string($surname),
+            "INSERT INTO user ( nickname,email, password)
+        VALUES ('%s', '%s', '%s')",
+             $this->conn->real_escape_string($nickname),
             $this->conn->real_escape_string($email),
             $this->conn->real_escape_string($password)
         );

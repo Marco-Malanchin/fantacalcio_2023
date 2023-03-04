@@ -1,45 +1,47 @@
 <!doctype html>
 <html lang="en">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fantacalcio | Login</title>
+        <title>Sandwech | Logon</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/style.css">
-        <link rel="icon" type="image/x-icon" href="assets/img/logo.png">
+        <link rel="icon" type="image/x-icon" href="../assets/img/logo.png">
     </head>
 
     <body>
         <form class="form-signin" method="post">
             <div class="row">
                 <div class="col-7 mx-auto">
-                    <img class="mb-4" src="assets/img/logo.png" alt="" width="100%" height=""> 
+                    <img class="mb-4" src="../assets/img/logo.png" alt="" width="100%" height=""> 
                 </div>
             </div>
             <h1 class="h3 mb-3 fw-bold">Inserisci le credenziali</h1>
-            <label for="inputEmail" class="sr-only mb-2">Indirizzo Email</label>
-            <input type="email" id="inputEmail" class="form-control mb-4" placeholder="Indirizzo Email" name = "email" required autofocus>
+            <label for="inputNickname" class="sr-only mb-2">Nickname</label>
+            <input type="name" id="inputName" class="form-control mb-4" placeholder="nickname" name = "nickname" required autofocus>
+            <label for="inputEmail" class="sr-only mb-2">Email</label>
+            <input type="surname" id="inputEmail" class="form-control mb-4" placeholder="email" name = "email" required autofocus>
             <label for="inputPassword" class="sr-only mb-2">Password</label>
-            <input type="password" id="inputPassword" class="form-control mb-4" placeholder="Password" name = "password" required>
-
+            <input type="password" id="inputPassword" class="form-control mb-4" placeholder="password" name = "password" required autofocus>
             <?php
 session_start();
 
-include_once dirname(__FILE__) . '/function/login.php';
+include_once dirname(__FILE__) . '/../function/registration.php';
 
 $inputs = "";
 $errors = "";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  if (!empty($_POST['email']) && !empty($_POST['password'])) {//se la variabile mail o password che devono essere inviate non sono vuote all'ora si invia
+  if (!empty($_POST['nickname'])&&!empty($_POST['email']) && !empty($_POST['password'])) {//se la variabile mail o password che devono essere inviate non sono vuote all'ora si invia
     $data = array(       //Immetto i dati all'interno di data
-      "email" => $_POST['email'],
+        "nickname" => $_POST['nickname'],
+        "email" => $_POST['email'],
       "password" => $_POST['password'],
     );
 
-    if (login($data) == -1)
+    if (registration($data) == -1)
     {
-      echo('<p class=text-danger>Email o password errata</p>');
+      echo('<p class=text-danger>Registrazione non effetuata</p>');
     }
   }
   else
@@ -51,19 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
             <div class="row ">
-                <div class="col-6">
-                <button class="btn btn-lg btn-primary btn-block mx-auto" type="submit">Accedi</button>
-                </div>
-                <div class="col-4">
-                <button class="btn btn-lg btn-primary btn-block mx-auto" id="register">Registrati</button>
-                </div>
-                <script>
-                                            var btn = document.getElementById('register');
-                                            btn.addEventListener('click', function() {
-                                            document.location.href = 'pages/registration.php';
-                                           });
-             </script>
-
+                <button class="btn btn-lg btn-primary btn-block mx-auto" type="submit">Registrati</button>
             </div>
         </form>
 
