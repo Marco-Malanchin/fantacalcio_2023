@@ -1,14 +1,7 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPOffice\PHPOffice\PHPSpreadsheet;
-use PHPMailer\PHPMailer\Exception;
-
 require __DIR__ . "/base.php";
-require __DIR__ . " /../COMMON/errorHandler.php";
-require __DIR__ . "/../vendor/phpmailer/phpmailer/src/PHPMailer.php";
-require __DIR__ . "/../vendor/phpmailer/phpmailer/src/Exception.php";
-require __DIR__ . "/../vendor/phpmailer/phpmailer/src/SMTP.php";
+require __DIR__ . " /../common/errorHandler.php";
 
 set_exception_handler("errorHandler::handleException");
 set_error_handler("errorHandler::handleError");

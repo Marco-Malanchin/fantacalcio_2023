@@ -3,7 +3,7 @@
 function login($data)
     {
        // $url = 'http://localhost:8080/Progetto-Panini/food-api/API/user/login.php';
-        $url = 'http://localhost/WebApp_User/food-api/API/user/login.php';
+        $url = 'http://localhost/fantacalcio/fantacalcio-api/api/user/login.php';
 
         $curl = curl_init($url);    //inizializza una nuova sessione di cUrl
         //Curl contiene il return del curl_init 
@@ -27,7 +27,8 @@ function login($data)
         curl_close($curl);  //chiudo sessione
 
         $response = json_decode($responseJson);     //decodifico la response dal json
-        
+        var_dump($data);
+    var_dump($response);
         if ($response->response == true)        //response == true vuol dire sessione senza errori
         {
             $_SESSION['user_id'] = $response->userID;
