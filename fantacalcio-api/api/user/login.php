@@ -5,7 +5,6 @@ require("../../model/user.php");
 header("Content-type: application/json; charset=UTF-8");
 
 $data = json_decode(file_get_contents("php://input"));
-var_dump($data);
 
 if (empty($data->email) || empty($data->password)) {
     http_response_code(400);
