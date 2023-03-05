@@ -26,7 +26,7 @@
             <?php
 session_start();
 
-include_once dirname(__FILE__) . '/../function/registration.php';
+include_once dirname(__FILE__) . '/../function/logon.php';
 
 $inputs = "";
 $errors = "";
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       "password" => $_POST['password'],
     );
 
-    if (registration($data) == -1)
+    if (logon($data) == -1)
     {
       echo('<p class=text-danger>Registrazione non effetuata</p>');
     }
