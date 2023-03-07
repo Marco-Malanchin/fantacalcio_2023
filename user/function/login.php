@@ -42,6 +42,6 @@ function login($data)
 
         $json_data = file_get_contents($url);
         $res = json_decode($json_data);
-        return $res[0]->name; 
+        return $res[0]->nickname; 
     }
 ?>

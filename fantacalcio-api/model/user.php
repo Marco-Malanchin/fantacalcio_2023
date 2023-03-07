@@ -11,7 +11,7 @@ class User extends BaseController
     public function getUser($id)
     {
         $sql = sprintf(
-            "SELECT name, surname, email
+            "SELECT nickname, email
             FROM user
             WHERE id = %d;",
             $this->conn->real_escape_string($id)
