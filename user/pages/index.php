@@ -20,7 +20,7 @@ if(empty($_SESSION['user_id'])){
     </head>
 
     <body>
-  
+    <?php require_once(__DIR__.'\navbar.php'); ?>
         <div class="container mt-5">
             <div class="row">
                 <?php
