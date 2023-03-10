@@ -22,5 +22,13 @@ class Legue
             
             return $this->conn->affected_rows;
     }
+    function getArchiveLegue(){
+        $query = "SELECT * FROM  $this->table_name";
+    
+                $stmt = $this->conn->query($query);
+    
+                return $stmt;
+    }
 }
+
 ?>
