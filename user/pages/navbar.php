@@ -27,10 +27,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Caratteristiche
+                        Leghe
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="addAllergen.php">Aggiungi Allergeni</a></li>
+                        <li><a class="dropdown-item" href="createLegue.php">crea lega</a></li>
                         <li><a class="dropdown-item" href="addClass.php">Aggiungi Classi</a></li>
                         <li><a class="dropdown-item" href="addIngredient.php">Aggiungi Ingredienti</a></li>
                         <li><a class="dropdown-item" href="addOffer.php">Aggiungi Offerte</a></li>
