@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "name"  => $_POST ['name'],
         "id_creator" =>$_SESSION['user_id'],
         );
-        var_dump($data);
       $response =(array) addLegue($data);
                 if (!empty($response)){
                      echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
