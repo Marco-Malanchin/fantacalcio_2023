@@ -58,3 +58,4 @@ alter table team_player  add constraint fk_player_team2 foreign key ( id_player 
 alter table user_legue  add constraint fk_user_legue foreign key ( id_user ) references `user` ( id );
 alter table user_legue  add constraint fk_legue_user foreign key ( id_legue ) references legue ( id );
 alter table matches  add constraint fk_matches_team foreign key ( id_team1 ) references team ( id );
+alter table legue add id_creator int not null;
