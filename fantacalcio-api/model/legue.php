@@ -29,6 +29,13 @@ class Legue
     
                 return $stmt;
     }
+    function getIdCreator(){
+        $query = "SELECT id_creator FROM  $this->table_name";
+    
+                $stmt = $this->conn->query($query);
+    
+                return $stmt;
+    }
 }
 
 ?>

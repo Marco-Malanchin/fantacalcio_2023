@@ -56,13 +56,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "name"  => $_POST ['name'],
         "id_creator" =>$_SESSION['user_id'],
         );
-      $response =(array) addLegue($data);
-                if (!empty($response)){
-                     echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
-                     
-                         }
-                 }
+        $id_arr = getIdCreator();
+        if (array_search($_SESSION['user_id'], array_column($id_arr, 'id_creator')) == true) {
+          echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due leghe alla volta.</p>');
         }
+        else{
+          $response =(array) addLegue($data);
+          if (!empty($response)){
+               echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                   }
+           }
+        }
+      }
 ?>
         </form>
 
