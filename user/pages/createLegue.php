@@ -1,3 +1,11 @@
+<?php
+
+session_start(); 
+if(empty($_SESSION['user_id'])){
+    header('location: ../login.php'); 
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -44,7 +52,11 @@ $err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])) {
-      $data = $_POST['name'];
+      $data = array(
+        "name"  => $_POST ['name'],
+        "id_creator" =>$_SESSION['user_id'],
+        );
+        var_dump($data);
       $response =(array) addLegue($data);
                 if (!empty($response)){
                      echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 

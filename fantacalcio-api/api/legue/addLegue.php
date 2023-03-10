@@ -13,14 +13,14 @@
 
     $data = json_decode(file_get_contents("php://input"));
 
-    if(empty($data) || empty($data->name)){
+    if(empty($data) || empty($data->name) || empty($data->id_creator)){
         http_response_code(400);
         die(json_encode(array("Message" => "Bad request")));
     }
 
     $legue = new Legue($db);
     
-    if($legue->createLegue($data->name) > 0)
+    if($legue->createLegue($data->name, $data->id_creator) > 0)
     {
         http_response_code(201);
         echo json_encode(array("Message"=> "Created"));
