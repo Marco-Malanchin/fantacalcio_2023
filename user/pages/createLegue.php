@@ -38,19 +38,20 @@
             
             <?php
 
-include_once dirname(__FILE__) . '/../function/createLegue.php';
+include_once dirname(__FILE__) . '\..\function\legue.php';
 
 $err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])) {
       $data = $_POST['name'];
-      $response = addLegue($data);
-      if (!empty($response)){
-        echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response . '</p>'); 
-      }
-    }
-  }
+      $response =(array) addLegue($data);
+                if (!empty($response)){
+                     echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                     
+                         }
+                 }
+        }
 ?>
         </form>
 
