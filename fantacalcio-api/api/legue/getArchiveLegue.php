@@ -14,7 +14,7 @@
     $data = json_decode(file_get_contents("php://input"));
     $legue = new legue($db);
 
-$stmt = $legue->getArchiveLegue();
+$stmt = $legue->getArchiveLegue($id_user);
 
 if ($stmt->num_rows > 0)
 {

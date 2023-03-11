@@ -24,3 +24,84 @@ if(empty($_SESSION['user_id'])){
     <div class="row mt-5">
       <h2>Leghe alle quali partecipi:</h2>
     </div>
+    <?php
+     include_once dirname(__FILE__) . '/../function/product.php';
+     $id = $_GET['id'];
+     $prod_arr = getProductsTag($id);
+    if (!empty($prod_arr) && $prod_arr != -1) {
+        foreach ($prod_arr as $row) {
+            echo ('
+                <div class="card mx-auto" style="width: 18rem;">
+                ');
+            switch ($id) {
+                case "1":
+                    echo ('<img src="../assets/img/panini.jpg" class="card-img-top" alt="..."> ');
+                    $img = "../assets/img/panini.jpg";
+                    echo ('
+                    <div class="card-body">
+                    <h5 class="card-title">' . $row['name'] . ' </h5>
+                    <h6 class="card-title">€' . $row['Price'] . ' </h6>
+                    <a href="singleProduct.php?id=' .$row['ID'].'& img= '.$img.' " class="btn btn-primary">visualizza prodotto</a>
+                    </div>
+                    </div>
+                    ');
+                    break;
+                    case "2":
+                        echo('<img src="../assets/img/bibite.png" class="card-img-top" alt="..."> ');
+                    $img = "../assets/img/bibite.png";
+                        echo ('
+                            <div class="card-body">
+                            <h5 class="card-title">' . $row['name'] . ' </h5>
+                            <h6 class="card-title">€' . $row['Price'] . ' </h6>
+                            <a href="singleProduct.php?id=' .$row['ID'].'& img= '.$img.' " class="btn btn-primary">visualizza prodotto</a>
+                            </div>
+                            </div>
+                            ');
+                        break;
+                        case "3":
+                            echo('<img src="../assets/img/piadine.jpeg" class="card-img-top" alt="..."> ');
+                          $img ="../assets/img/piadine.jpeg";
+                            echo ('
+                            <div class="card-body">
+                            <h5 class="card-title">' . $row['name'] . ' </h5>
+                            <h6 class="card-title">€' . $row['Price'] . ' </h6>
+                            <a href="singleProduct.php?id=' .$row['ID'].'& img= '.$img.' " class="btn btn-primary">visualizza prodotto</a>
+                            </div>
+                            </div>
+                            ');
+                            break;
+                            case "4":
+                                echo('<img src="../assets/img/brioches.jpg" class="card-img-top" alt="..."> ');
+                                $img ="../assets/img/brioches.jpg";
+                                echo ('
+                                <div class="card-body">
+                                <h5 class="card-title">' . $row['name'] . ' </h5>
+                                <h6 class="card-title">€' . $row['Price'] . ' </h6>
+                                <a href="singleProduct.php?id=' .$row['ID'].'& img= '.$img.' " class="btn btn-primary">visualizza prodotto</a>
+                                </div>
+                                </div>
+                                ');
+                                break;
+                                case "5":
+                                    echo('<img src="../assets/img/snack.jpg" class="card-img-top" alt="..."> ');
+                                    $img ="../assets/img/snack.jpg";
+                                    echo ('
+                                    <div class="card-body">
+                                    <h5 class="card-title">' . $row['name'] . ' </h5>
+                                    <h6 class="card-title">€' . $row['Price'] . ' </h6>
+                                    <a href="singleProduct.php?id=' .$row['ID'].'& img= '.$img.' " class="btn btn-primary">visualizza prodotto</a>
+                                    </div>
+                                    </div>
+                                    ');
+                                    break;
+            }
+        }
+    }
+?>
+</div>
+</div>
+
+</form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+</html>
