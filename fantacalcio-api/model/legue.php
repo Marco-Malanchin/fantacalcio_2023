@@ -6,7 +6,8 @@ class Legue
 
     protected $name;
     protected $id_creator;
-
+    protected $id_user;
+    protected $id_legue;
 
     public function __construct($db)
     {
@@ -44,20 +45,21 @@ class Legue
 
             return $stmt;
         }
+        function addUserLegue($id_user, $id_legue){
+            $query = "INSERT INTO user_legue  (id_user, id_legue) VALUES (?,?)";
+        
+            $stmt = $this->conn->prepare($query);
+        
+            $stmt->bind_param('ii', $id_user, $id_legue);
+            $stmt->execute();
+            
+            return $this->conn->affected_rows;
+        }
 }
 
 
 
-function addUserLegue($id_user, $id_legue){
-    $query = "INSERT INTO $this->table_name  (id_user, id_legue) VALUES (?,?)";
 
-    $stmt = $this->conn->prepare($query);
-
-    $stmt->bind_param('ss', $id_user, $id_legue);
-    $stmt->execute();
-    
-    return $this->conn->affected_rows;
-}
 
 
 

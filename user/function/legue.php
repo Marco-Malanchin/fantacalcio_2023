@@ -80,7 +80,6 @@ function getIdCreator(){
 function adduserLegue($data)
 {
     $url = 'http://localhost/fantacalcio/fantacalcio-api/api/legue/addUserLegue.php';
-
     $curl = curl_init($url); //inizializza una nuova sessione di cUrl
     //Curl contiene il return del curl_init 
 
@@ -98,7 +97,6 @@ function adduserLegue($data)
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
 
     $responseJson = curl_exec($curl);
-
     curl_close($curl);
 
     $response = json_decode($responseJson);
@@ -114,7 +112,7 @@ function getLegueByCreator($id_creator){
         $legue_data = $decode_data;
         $legue_arr = array();
         if(empty($legue_data->message)){
-        return $legue_data[0]['id'];
+        return $legue_data[0]['id']; //returno solo id
         }
         else{
             $res = "Errore"; 

@@ -49,13 +49,11 @@ if(empty($_SESSION['user_id'])){
 include_once dirname(__FILE__) . '\..\function\legue.php';
 $err = "";
 $id_creator = $_SESSION['user_id'];
-$id_user = getLegueByCreator($id_creator);
-var_dump($id_user);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])) {
       $data = array(
         "name"  => $_POST ['name'],
-        "id_creator" =>$_SESSION['user_id'],
+        "id_creator" =>$id_creator,
         );
         $id_arr = getIdCreator();
         if (array_search($_SESSION['user_id'], array_column($id_arr, 'id_creator')) == true) {
@@ -65,8 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $response =(array) addLegue($data);
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+               $id_legue = getLegueByCreator($id_creator);
+               $data2 = array(
+                "id_user"  => $id_creator,
+                "id_legue" =>  $id_legue,
+                );
+                adduserLegue($data2);
                    }
-                  
            }
         }
       }
