@@ -47,9 +47,10 @@ if(empty($_SESSION['user_id'])){
             <?php
 
 include_once dirname(__FILE__) . '\..\function\legue.php';
-
 $err = "";
-
+$id_creator = $_SESSION['user_id'];
+$id_user = getLegueByCreator($id_creator);
+var_dump($id_user);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])) {
       $data = array(
@@ -65,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
                    }
+                  
            }
         }
       }

@@ -36,16 +36,17 @@ class Legue
     
                 return $stmt;
     }
-}
-
-function getLegue($id_creator)//ritorna il singolo allergene
+    function getLegue($id_creator)
         {
-            $query = "SELECT * FROM $this->table_name WHERE id_creator = $id_creator";
+            $query = "SELECT id  FROM $this->table_name WHERE id_creator = $id_creator";
 
             $stmt = $this->conn->query($query);
 
             return $stmt;
         }
+}
+
+
 
 function addUserLegue($id_user, $id_legue){
     $query = "INSERT INTO $this->table_name  (id_user, id_legue) VALUES (?,?)";
