@@ -31,9 +31,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="createLegue.php">crea lega</a></li>
-                        <li><a class="dropdown-item" href="addClass.php">Aggiungi Classi</a></li>
+                        <li><a class="dropdown-item" href="viewLegue.php">vedi leghe</a></li>
                         <li><a class="dropdown-item" href="addIngredient.php">Aggiungi Ingredienti</a></li>
-                        <li><a class="dropdown-item" href="addOffer.php">Aggiungi Offerte</a></li>
+                        <li><a class="dropdown-item" href="addOffer.php">Aggiungi Offerte</a></li>  
                         <li><a class="dropdown-item" href="addPickup.php">Aggiungi Ritiro</a></li>
                     </ul>
                 </li>
