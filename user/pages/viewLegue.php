@@ -33,10 +33,8 @@ if(empty($_SESSION['user_id'])){
             echo ('
                 <div class="card mx-auto" style="width: 18rem;">
                 <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
-               '.$img.' = "../assets/img/logo.png";
                 <div class="card-body">
                 <h5 class="card-title">' . $row['name'] . ' </h5>
-                < img= '.$img.' " class="btn btn-primary">visualizza lega</a>
                 </div>
                 </div>
                 ');

@@ -22,7 +22,6 @@
 }
 
 $id_user = $_GET['id_user']; 
-var_dump($id_user);
 $result =$legue->getLegueUser($id_user);
 
 if (mysqli_num_rows($result) > 0) {
