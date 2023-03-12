@@ -55,12 +55,12 @@ class Legue
             
             return $this->conn->affected_rows;
         }
-        function getArchiveLegue($id_user)
+        function getLegueUser($id_user)
         {
-            $query = "SELECT name  FROM legue l
+            $query = "SELECT name , l.id FROM legue l
             inner join user_legue ul on ul.id_legue = l.id
             inner join `user` u on u.id = ul.id_user
-             WHERE id_creator = $id_user";
+             WHERE u.id  = $id_user";
             
             $stmt = $this->conn->query($query);
 

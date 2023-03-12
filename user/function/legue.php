@@ -125,26 +125,29 @@ function getLegueByCreator($id_creator){
     }
 }
     function getLegueByUser($id_user){
-
-        $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getLegueById.php?id_user=" . $id_user; 
-        $json_data = file_get_contents($url);
-        if($json_data!=false){
-            $decode_data = json_decode($json_data, $assoc = true);
-            $legue_data = $decode_data;
-            $legue_arr = array();
-            if(empty($legue_data->message)){
-                foreach ($legue_data as $legue) {
-                    $legue_record = array(
-                        'name' => $legue['name'],
-                    );
-                    array_push($legue_arr, $legue_record);
+        {
+            $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getArchiveLegue.php?id_user=" . $id_user;
+        
+            $json_data = file_get_contents($url);
+            if ($json_data != false) {
+                $decode_data = json_decode($json_data, $assoc = true);
+                $legue_data = $decode_data;
+                $legue_arr = array();
+                if (!empty($legue_data)) {
+                    foreach ($legue_data as $legue) {
+                        $legue_record = array(
+                            'id' => $legue['id'],
+                            'name' => $legue['name'],
+                        );
+                        array_push($legue_arr, $legue_record);
+                    }
+                    return $legue_arr;
+                } else {
+                    return -1;
                 }
-                return $legue_arr;
             } else {
                 return -1;
             }
-        } else {
-            return -1;
         }
     }
 ?>
