@@ -30,9 +30,9 @@
                         Leghe
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="createLegue.php">crea lega</a></li>
-                        <li><a class="dropdown-item" href="viewLegueByUser.php">vedi leghe</a></li>
-                        <li><a class="dropdown-item" href="addIngredient.php">Aggiungi Ingredienti</a></li>
+                        <li><a class="dropdown-item" href="createLegue.php">Crea Lega</a></li>
+                        <li><a class="dropdown-item" href="viewLegueByUser.php">Vedi Leghe</a></li>
+                        <li><a class="dropdown-item" href="partecipateLegue.php">Partecipa Leghe</a></li>
                         <li><a class="dropdown-item" href="addOffer.php">Aggiungi Offerte</a></li>  
                         <li><a class="dropdown-item" href="addPickup.php">Aggiungi Ritiro</a></li>
                     </ul>

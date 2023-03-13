@@ -11,7 +11,7 @@ if(empty($_SESSION['user_id'])){
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fantacalcio | CreaLeghe</title>
+        <title>Fantacalcio | PartecipaLeghe</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/style.css">
         <link rel="icon" type="image/x-icon" href="../assets/img/logo.png">
@@ -22,11 +22,28 @@ if(empty($_SESSION['user_id'])){
 
   <div class="container">
     <div class="row mt-5">
-      <h2>Leghe disponibili:</h2>
+      <h2>Leghe alle quali puoi partecipare:</h2>
     </div>
     <div class = "container mt-5">
     <div class = "row  row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
- 
+    <?php
+     include_once dirname(__FILE__) . '/../function/legue.php';
+     $id = $_SESSION['user_id'];
+     $league_arr = getLegueNotPartecipated($id);
+    if (!empty($league_arr) && $league_arr != -1) {
+        foreach ($league_arr as $row) {
+            echo ('
+                <div class="card mx-auto" style="width: 18rem;">
+                <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
+                <div class="card-body">
+                <h5 class="card-title">' . $row['name'] . ' </h5>
+                <a href="singleLegue.php?id=' .$row['id_leg'].' " class="btn btn-primary">partecipa</a>
+                </div>
+                </div>
+                ');
+        }
+    }
+?>
 </div>
 </div>
 </div>

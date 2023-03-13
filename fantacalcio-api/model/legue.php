@@ -76,6 +76,10 @@ class Legue
                 inner join user_legue ul on ul.id_legue = l.id
                 inner join `user` u on u.id = ul.id_user
                where u.id = $id_user)";
+
+            $stmt = $this->conn->query($query);
+
+            return $stmt;
         }
 }
 ?>
