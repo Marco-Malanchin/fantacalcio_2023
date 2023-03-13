@@ -66,5 +66,16 @@ class Legue
 
             return $stmt;
         }
+
+        function getLegueNotPartecipated($id_user){
+            select id_leg, name from (
+                SELECT l.name, l.id  as id_leg FROM legue l
+                inner join user_legue ul on ul.id_legue = l.id
+                inner join `user` u on u.id = ul.id_user) il
+               where id_leg not in (SELECT l.id as id_leg FROM legue l
+                inner join user_legue ul on ul.id_legue = l.id
+                inner join `user` u on u.id = ul.id_user
+               where u.id =1);
+        }
 }
 ?>
