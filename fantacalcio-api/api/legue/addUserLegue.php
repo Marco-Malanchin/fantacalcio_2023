@@ -23,7 +23,7 @@
     if($legue->addUserLegue($data->id_user, $data->id_legue) > 0)
     {
         http_response_code(201);
-        echo json_encode(array("Message"=> "Created"));
+        echo json_encode(array("Message"=> "Partecipatazione avvenuta con successo"));
     }
     else
     {

@@ -37,12 +37,29 @@ if(empty($_SESSION['user_id'])){
                 <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
                 <div class="card-body">
                 <h5 class="card-title">' . $row['name'] . ' </h5>
-                <a href="singleLegue.php?id=' .$row['id_leg'].' " class="btn btn-primary">partecipa</a>
+                <form method="post">
+                <td>
+                  <button type="submit" class="btn btn-primary" name="partecipa">Partecipa</button>
+                  </td>
                 </div>
                 </div>
                 ');
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $data = array(
+                      "id_user"  => $_SESSION['user_id'],
+                      "id_legue" =>  $row['id_leg'],
+                       );
+                       $response =(array)adduserLegue($data);
+                       if (!empty($response)){
+                            echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                      }
+                    }
         }
     }
+    else{
+        echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non ci sono leghe alle quali puoi partecipare.</p>');
+    }
+   
 ?>
 </div>
 </div>

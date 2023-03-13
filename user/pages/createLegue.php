@@ -43,7 +43,7 @@ if(empty($_SESSION['user_id'])){
               </td>
               <td>
                 <button type="submit" class="btn btn-success" name="legha">Conferma</button>
-            
+</td>
             <?php
 
 include_once dirname(__FILE__) . '\..\function\legue.php';

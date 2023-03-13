@@ -38,6 +38,6 @@ if (mysqli_num_rows($result) > 0) {
     echo (json_encode($arr_legues, JSON_PRETTY_PRINT));
 } else {
     http_response_code(400);
-    echo json_encode(["message" => "No record found"]);
+    echo json_encode(["message" => "Nessuna lega trovata"]);
 }
 ?>
