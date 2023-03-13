@@ -24,6 +24,8 @@ if(empty($_SESSION['user_id'])){
     <div class="row mt-5">
       <h2>Leghe alle quali partecipi:</h2>
     </div>
+    <div class = "container mt-5">
+    <div class = "row  row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     <?php
      include_once dirname(__FILE__) . '/../function/legue.php';
      $id = $_SESSION['user_id'];
@@ -35,12 +37,15 @@ if(empty($_SESSION['user_id'])){
                 <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
                 <div class="card-body">
                 <h5 class="card-title">' . $row['name'] . ' </h5>
+                <a href="singleLegue.php?id=' .$row['id'].' " class="btn btn-primary">visualizza legha</a>
                 </div>
                 </div>
                 ');
         }
     }
 ?>
+</div>
+</div>
 </div>
 </div>
 
