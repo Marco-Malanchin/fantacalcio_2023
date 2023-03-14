@@ -89,5 +89,16 @@ class Legue
 
         return $stmt;
         }
+        function getPlayerbyLegue($id){
+            $query =" SELECT u.nickname from
+            `user` u 
+            inner join user_legue ul on u.id = ul.id_user 
+            inner join legue l on ul.id_legue = l.id 
+            where l.id = $id";
+
+            $stmt = $this->conn->query($query);
+            return $stmt;
+           
+        }
 }
 ?>

@@ -198,4 +198,29 @@ function getLegueByCreator($id_creator){
         return $res; 
     }
     }
+    function getPlayerNameByID($id){
+        {
+            $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getPlayerNamebyId.php?id=" . $id;
+        
+            $json_data = file_get_contents($url);
+            if ($json_data != false) {
+                $decode_data = json_decode($json_data, $assoc = true);
+                $legue_data = $decode_data;
+                $legue_arr = array();
+                if (!empty($legue_data)) {
+                    foreach ($legue_data as $legue) {
+                        $legue_record = array(
+                            'nickname' => $legue['nickname'],
+                        );
+                        array_push($legue_arr, $legue_record);
+                    }
+                    return $legue_arr;
+                } else {
+                    return -1;
+                }
+            } else {
+                return -1;
+            }
+        }
+    }
 ?>

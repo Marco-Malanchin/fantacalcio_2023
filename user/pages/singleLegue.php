@@ -28,24 +28,31 @@ if(empty($_SESSION['user_id'])){
      $nome = getLegueName($id);
       echo('<h2>'.$nome.':</h2>');
       ?>
-    </div>
+
+    <div class = "container mt-5">
     <div class="row mt-5">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"></th>
-            <form method="post">
-              <td>
-                <input class="form-control" type="" id="name" placeholder="Nome nuova legha" name="name"
-                  maxlength="50" required>
-              </td>
-              <td>
-                <button type="submit" class="btn btn-success" name="legha">Conferma</button>
-</td>
+    <h5>player partecipanti:</h5>
+    <?php
+     include_once dirname(__FILE__) . '/../function/legue.php';
+     $id = $_GET['id'];
+     $league_arr = getPlayerNameByID($id);
+     echo('<ul class="list-group">');
+     if (!empty($league_arr) && $league_arr != -1) {
+        foreach ($league_arr as $row) {
+            echo ('
+  <li class="list-group-item">'.$row['nickname'].'</li>
+                ');
+        }
+    }
+?>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+</form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+</html>
