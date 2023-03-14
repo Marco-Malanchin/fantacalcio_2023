@@ -81,5 +81,13 @@ class Legue
 
             return $stmt;
         }
+        function getNameLegue($id){
+            $query = "SELECT name from legue l
+            where id = $id";
+
+        $stmt = $this->conn->query($query);
+
+        return $stmt;
+        }
 }
 ?>

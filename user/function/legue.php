@@ -177,4 +177,25 @@ function getLegueByCreator($id_creator){
             }
         }
     }
+
+    function getLegueName($id){
+        $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getNameLegue.php?id=" . $id; 
+    $json_data = file_get_contents($url);
+    if($json_data!=false){
+        $decode_data = json_decode($json_data, $assoc = true);
+        $legue_data = $decode_data;
+        $legue_arr = array();
+        if(empty($legue_data->message)){
+        return $legue_data[0]['name']; //returno solo id
+        }
+        else{
+            $res = "Errore"; 
+            return $res; 
+        }
+    }
+    else{
+        $res =-1; 
+        return $res; 
+    }
+    }
 ?>
