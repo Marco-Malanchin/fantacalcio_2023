@@ -11,7 +11,7 @@
     
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="homePage.php">
+        <a class="navbar-brand fw-bold" href="index.php">
             <img src="../assets/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2">
             Fantacalcio 
         </a>

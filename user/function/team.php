@@ -36,19 +36,16 @@ function getIdTeamUser(){
     $off_data = $decode_data;
     if (!empty($off_data)) {
         $off_arr = array();
-
         foreach ($off_data as $off) {
             $off_record = array(
                 'id_user' => $off['id_user'],
             );
             array_push($off_arr, $off_record);
         }
-
         return $off_arr;
     }
     else{
         return -1; 
     }
-
 }
 ?>
