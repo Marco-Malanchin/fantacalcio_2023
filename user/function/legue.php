@@ -126,7 +126,7 @@ function getLegueByCreator($id_creator){
 }
     function getLegueByUser($id_user){
         {
-            $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getArchiveLegue.php?id_user=" . $id_user;
+            $url = "http://localhost/fantacalcio/fantacalcio-api/api/legue/getArchiveLeguebyId.php?id_user=" . $id_user;
         
             $json_data = file_get_contents($url);
             if ($json_data != false) {

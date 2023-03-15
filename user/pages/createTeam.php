@@ -57,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "id_legue" =>$id_legue,
         "name"  => $_POST ['name'],
         );
-        $id_arr = getIdCreator();
+        $id_arr = getIdUserTeam();
         if (array_search($_SESSION['user_id'], array_column($id_arr, 'id_creator')) == true) {
-          echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due leghe alla volta.</p>');
+          echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
         }
         else{
           $response =(array) addLegue($data);
