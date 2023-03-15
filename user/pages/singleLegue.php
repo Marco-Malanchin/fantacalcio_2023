@@ -32,6 +32,7 @@ if(empty($_SESSION['user_id'])){
     <div class = "container mt-5">
     <div class="row mt-5">
     <h5>player partecipanti:</h5>
+    <br><br>
     <?php
      include_once dirname(__FILE__) . '/../function/legue.php';
      $id = $_GET['id'];
@@ -47,8 +48,12 @@ if(empty($_SESSION['user_id'])){
 ?>
 </ul>
 </div>
-</div>
-</div>
+<br>
+<?php
+  $id = $_GET['id'];
+    echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+?>
+    </div>
 </div>
 
 
