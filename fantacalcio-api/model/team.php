@@ -24,6 +24,19 @@ class Team
             
             return $this->conn->affected_rows;
     }
+    function getIdUser(){
+        $query = "SELECT id_user FROM  $this->table_name";
     
+                $stmt = $this->conn->query($query);
+    
+                return $stmt;
+    }
+    function getArchiveTeam(){
+        $query = "SELECT * FROM  $this->table_name";
+    
+                $stmt = $this->conn->query($query);
+    
+                return $stmt;
+    }
 }
 ?>
