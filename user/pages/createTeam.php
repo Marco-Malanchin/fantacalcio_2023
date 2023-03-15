@@ -57,17 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "id_legue" =>$id_legue,
         "name"  => $_POST ['name'],
         );
-        $id_arr = getIdTeamUser();
-        var_dump($id_arr);
-        if (array_search($id_user, array_column($id_arr, 'id_user')) == TRUE) {
-          echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
+        $user = getIdTeamUser();
+        $legue =  getIdTeamLegue();
+        if (array_search($id_user, array_column($user, 'id_user')) == TRUE) {
+          if (array_search($id_legue, array_column($legue, 'id_legue')) == TRUE){            
+            echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
+            }
+            else{
+              $response =(array) addTeam($data);
+              if (!empty($response)){
+                   echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                       }
+               }
         }
-        else{
-            $response =(array) addTeam($data);
-            if (!empty($response)){
-                 echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
-                     }
-             }
         }
       }
 ?>
