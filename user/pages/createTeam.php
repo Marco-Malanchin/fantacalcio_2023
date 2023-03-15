@@ -58,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "name"  => $_POST ['name'],
         );
         $id_arr = getIdTeamUser();
-        if (array_search($_SESSION['user_id'], array_column($id_arr, 'id_user')) == true) {
+        var_dump($id_arr);
+        if (array_search($id_user, array_column($id_arr, 'id_user')) == false) {
           echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
         }
         else{

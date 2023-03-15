@@ -29,8 +29,7 @@ function addTeam($data)
     return $response;
 }
 function getIdTeamUser(){
-    $url = 'http://localhost/fantacalcio/fantacalcio-api/api/legue/getUserIdTeam.php';
-
+    $url = 'http://localhost/fantacalcio/fantacalcio-api/api/team/getUserIdTeam.php';
     $json_data = file_get_contents($url);
 
     $decode_data = json_decode($json_data, $assoc = true);

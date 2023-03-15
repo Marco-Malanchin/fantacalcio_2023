@@ -14,7 +14,7 @@
     $data = json_decode(file_get_contents("php://input"));
     $team = new Team($db);
 
-$stmt = $team->getArchiveTeam();
+$stmt = $team->getIdUser();
 
 if ($stmt->num_rows > 0)
 {
