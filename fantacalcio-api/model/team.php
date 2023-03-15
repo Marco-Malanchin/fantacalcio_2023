@@ -38,5 +38,14 @@ class Team
     
                 return $stmt;
     }
+
+    function getUserFromLegue($id){
+        $query = "SELECT id_user FROM  $this->table_name
+        where id_legue = $id";
+        $stmt = $this->conn->query($query);
+
+        return $stmt;
+    }
+    
 }
 ?>

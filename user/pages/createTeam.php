@@ -55,12 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "id_legue" =>$id_legue,
         "name"  => $_POST ['name'],
         );
-        $user = getIdTeamUser();
-        $legue =  getIdTeamLegue();
-        if (array_search($id_user, array_column($user, 'id_user')) == true) {
-          if (array_search($id_legue, array_column($legue, 'id_legue')) == TRUE){            
+        $legue =  checkIdTeam($id_legue);
+        var_dump($legue);
+        if (array_search($id_user, array_column($legue, 'id_user')) == TRUE) {   
             echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
-            }
+        }
             else{
               $response =(array) addTeam($data);
               if (!empty($response)){
@@ -69,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                }
         }
         }
-      }
 ?>
         </form>
 
