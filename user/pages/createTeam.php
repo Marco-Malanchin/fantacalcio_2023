@@ -1,5 +1,4 @@
 <?php
-
 session_start(); 
 if(empty($_SESSION['user_id'])){
     header('location: ../login.php'); 
@@ -45,7 +44,6 @@ if(empty($_SESSION['user_id'])){
                 <button type="submit" class="btn btn-success" name="squadra">Conferma</button>
 </td>
             <?php
-
 include_once dirname(__FILE__) . '\..\function\team.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
@@ -59,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
         $user = getIdTeamUser();
         $legue =  getIdTeamLegue();
-        if (array_search($id_user, array_column($user, 'id_user')) == TRUE) {
+        if (array_search($id_user, array_column($user, 'id_user')) == true) {
           if (array_search($id_legue, array_column($legue, 'id_legue')) == TRUE){            
             echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
             }

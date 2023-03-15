@@ -100,5 +100,12 @@ class Legue
             return $stmt;
            
         }
+        function getUSERLegue(){
+            $query = "SELECT * FROM  user_legue ul";
+        
+                    $stmt = $this->conn->query($query);
+        
+                    return $stmt;
+        }
 }
 ?>
