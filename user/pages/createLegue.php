@@ -42,15 +42,20 @@ if(empty($_SESSION['user_id'])){
                   maxlength="50" required>
               </td>
               <td>
+                <input class="form-control" type="" id="team" placeholder="Nome della tua squadra" name="team"
+                  maxlength="50" required>
+              </td>
+              <td>
                 <button type="submit" class="btn btn-success" name="legha">Conferma</button>
 </td>
             <?php
 
 include_once dirname(__FILE__) . '\..\function\legue.php';
+include_once dirname(__FILE__) . '\..\function\team.php';
 $err = "";
 $id_creator = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['name'])) {
+    if (!empty($_POST['name'])&& !empty($_POST['team'])) {
       $data = array(
         "name"  => $_POST ['name'],
         "id_creator" =>$id_creator,
@@ -69,6 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 "id_legue" =>  $id_legue,
                 );
                 adduserLegue($data2);
+                $data3 = array(
+                  "id_user" =>$id_creator,
+                  "id_legue" =>$id_legue,
+                  "name"  => $_POST ['team'],
+                  );
+                  addTeam($data3);
                    }
            }
         }
