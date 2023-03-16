@@ -48,6 +48,7 @@ include_once dirname(__FILE__) . '\..\function\team.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
 $id_legue= $_GET['id'];
+$user =$_GET['id_creator'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])) {
       $data = array(
@@ -60,6 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $legue =  checkIdTeam($id_legue);
         if (array_search($id_user, array_column($legue, 'id_user')) == TRUE) {   
             echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
+            echo('<br>');
+            echo('<a href = "singleLegue.php?id=' .$id_legue.'&id_creator=' .$user.'"  class="btn btn-primary" >Torna a pagina lega</a>');
         }
         else{
           $response =(array) addTeam($data);
@@ -72,6 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $response =(array) addTeam($data);
                 if (!empty($response)){
                      echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                     echo('<br>');
+                     echo('<a href = "singleLegue.php?id=' .$id_legue.'&id_creator=' .$user.'"  class="btn btn-primary" >Torna a pagina lega</a>');
                          }
               }
         }

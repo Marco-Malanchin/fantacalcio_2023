@@ -74,10 +74,10 @@ if(empty($_SESSION['user_id'])){
     if($user == $_SESSION['user_id']){
         echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
         echo('<br><br>');
-        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+        echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
     }
     else{
-        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+        echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
     }
 ?>
     </div>

@@ -32,18 +32,37 @@ if(empty($_SESSION['user_id'])){
     <div class="row mt-5">
     <h5>player partecipanti:</h5>
     <br><br>
+    <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome Player</th>
+                            <th scope="col">Nome Team</th>
+                            <th scope="col">Punteggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
     <?php
      include_once dirname(__FILE__) . '/../function/legue.php';
      $id = $_GET['id'];
      $league_arr = getPlayerNameByID($id);
-     echo('<ul class="list-group">');
+     $i = 0; //skippo gli elementi che non servono
      if (!empty($league_arr) && $league_arr != -1) {
         foreach ($league_arr as $row) {
-            echo ('
-  <li class="list-group-item">'.$row['nickname'].'</li>
-                ');
+            echo ('<tr>');
+            if( $i++ < 1){
+                continue; //skippo gli elementi che non servono
+            }
+            else{
+            foreach ($row as $cell) {
+                //ogni elemento della riga è finalmente una cella
+                echo ('<td>' . $cell . '</td>');
+            }
+            echo ("</tr>\n");
+            }  
         }
-    }
+        }
+        echo('</tbody>'); 
+        echo ('</table>');
 ?>
 </ul>
 </div>

@@ -90,11 +90,12 @@ class Legue
         return $stmt;
         }
         function getPlayerbyLegue($id){
-            $query ="SELECT distinct u.nickname, t.name, t.score from
+            $query ="SELECT distinct u.nickname,t.id, t.name, t.score from
             team t
 			inner join legue l on t.id_legue = l.id 
 			inner join `user` u on t.id_user = u.id 
-            where l.id  = $id";
+            where l.id  = $id
+            ORDER BY t.id ASC";
 
             $stmt = $this->conn->query($query);
             return $stmt;
