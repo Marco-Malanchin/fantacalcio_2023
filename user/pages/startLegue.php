@@ -42,6 +42,7 @@ if(empty($_SESSION['user_id'])){
 include_once dirname(__FILE__) . '\..\function\legue.php';
 include_once dirname(__FILE__) . '\..\function\team.php';
 include_once dirname(__FILE__) . '\..\function\footballer.php';
+include_once dirname(__FILE__) . '\..\function\matches.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
 $id_lega = $_GET['id'];

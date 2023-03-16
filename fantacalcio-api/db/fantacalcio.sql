@@ -23,8 +23,8 @@ match_number int unsigned not null,
 id_legue int unsigned not null,
 id_team1 int unsigned not null,
 id_team2 int unsigned not null,
-score_1 int unsigned not null,
-score_2 int unsigned not null
+score_1 int unsigned,
+score_2 int unsigned 
 );
 
 create table legue(
