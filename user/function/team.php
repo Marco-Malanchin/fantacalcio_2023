@@ -89,4 +89,26 @@ function checkIdTeam($id){
             return -1; 
         }
     }
+    function getidTeambyLegue($id){
+        $url = "http://localhost/fantacalcio/fantacalcio-api/api/team/getArchiveTeamByLegue.php?id=" . $id;
+        $json_data = file_get_contents($url);
+
+        $decode_data = json_decode($json_data, $assoc = true);
+        $team_data = $decode_data;
+        if (!empty($team_data)) {
+            $team_arr = array();
+    
+            foreach ($team_data as $team) {
+                $team_record = array(
+                    'id' => $team['id'],
+                );
+                array_push($team_arr, $team_record);
+            }
+    
+            return $team_arr;
+        }
+        else{
+            return -1; 
+        }
+    }
 ?>

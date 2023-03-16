@@ -44,15 +44,182 @@ include_once dirname(__FILE__) . '\..\function\team.php';
 include_once dirname(__FILE__) . '\..\function\footballer.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
+$id_lega = $_GET['id'];
 //$id_team = $_GET['id_team'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $data = array(
-        "name"  => $_POST ['name'],
-        "surname" =>$_POST ['surname'],
-        "role" =>$_POST ['role'],
-        "id_team"=> $id_team,
-        );
-          $response =(array) addFootballer($data);
+        $squadre = getidTeambyLegue($id_lega);
+    $numero1 = rand(1,3);
+        switch ($numero1) {
+            case 1:
+                $data1 = array(
+                    "match_number"  => 1,
+                    "id_legue" =>$id_lega,
+                    "id_team1" =>$squadre[1],
+                    "id_team2"=> $squadre[2],
+                    "score_1"=> 3,
+                    "score_2"=> 0,
+                    );
+                    $data2 = array(
+                        "match_number"  => 1,
+                        "id_legue" =>$id_lega,
+                        "id_team1" =>$squadre[3],
+                        "id_team2"=> $squadre[4],
+                        "score_1"=> 3,
+                        "score_2"=> 0,
+                        );
+                break;
+            case 2:
+                $data1 = array(
+                    "match_number"  => 1,
+                    "id_legue" =>$id_lega,
+                    "id_team1" =>$squadre[1],
+                    "id_team2"=> $squadre[2],
+                    "score_1"=> 1,
+                    "score_2"=> 1,
+                    );
+                    $data2 = array(
+                        "match_number"  => 1,
+                        "id_legue" =>$id_lega,
+                        "id_team1" =>$squadre[3],
+                        "id_team2"=> $squadre[4],
+                        "score_1"=> 1,
+                        "score_2"=> 1,
+                        );
+                break;
+            case 3:
+                $data1 = array(
+                    "match_number"  => 1,
+                    "id_legue" =>$id_lega,
+                    "id_team1" =>$squadre[1],
+                    "id_team2"=> $squadre[2],
+                    "score_1"=> 0,
+                    "score_2"=> 3,
+                    );
+                    $data2 = array(
+                        "match_number"  => 1,
+                        "id_legue" =>$id_lega,
+                        "id_team1" =>$squadre[3],
+                        "id_team2"=> $squadre[4],
+                        "score_1"=> 0,
+                        "score_2"=> 3,
+                        );
+                break;
+                                    }
+                $numero2 = rand(1,3);
+                switch ($numero2) {
+                    case 1:
+                                $data3 = array(
+                                    "match_number"  => 2,
+                                    "id_legue" =>$id_lega,
+                                    "id_team1" =>$squadre[1],
+                                    "id_team2"=> $squadre[3],
+                                    "score_1"=> 3,
+                                    "score_2"=> 0,
+                                    );
+                                    $data4 = array(
+                                        "match_number"  => 2,
+                                        "id_legue" =>$id_lega,
+                                        "id_team1" =>$squadre[2],
+                                        "id_team2"=> $squadre[4],
+                                        "score_1"=> 3,
+                                        "score_2"=> 0,
+                                        );
+                        break;
+                    case 2:
+                                $data3 = array(
+                                    "match_number"  => 2,
+                                    "id_legue" =>$id_lega,
+                                    "id_team1" =>$squadre[1],
+                                    "id_team2"=> $squadre[3],
+                                    "score_1"=> 1,
+                                    "score_2"=> 1,
+                                    );
+                                    $data4 = array(
+                                        "match_number"  => 2,
+                                        "id_legue" =>$id_lega,
+                                        "id_team1" =>$squadre[2],
+                                        "id_team2"=> $squadre[4],
+                                        "score_1"=> 1,
+                                        "score_2"=> 1,
+                                        );
+                        break;
+                    case 3:
+                                $data3 = array(
+                                    "match_number"  => 2,
+                                    "id_legue" =>$id_lega,
+                                    "id_team1" =>$squadre[1],
+                                    "id_team2"=> $squadre[3],
+                                    "score_1"=> 0,
+                                    "score_2"=> 3,
+                                    );
+                                    $data4 = array(
+                                        "match_number"  => 2,
+                                        "id_legue" =>$id_lega,
+                                        "id_team1" =>$squadre[2],
+                                        "id_team2"=> $squadre[4],
+                                        "score_1"=> 0,
+                                        "score_2"=> 3,
+                                        );
+                        break;
+                                            }
+                                            $numero3 = rand(1,3);
+                switch ($numero3) {
+                    case 1:
+                                        $data5 = array(
+                                            "match_number"  => 3,
+                                            "id_legue" =>$id_lega,
+                                            "id_team1" =>$squadre[1],
+                                            "id_team2"=> $squadre[4],
+                                            "score_1"=> 3,
+                                            "score_2"=> 0,
+                                            );
+                                            $data6 = array(
+                                                "match_number"  => 3,
+                                                "id_legue" =>$id_lega,
+                                                "id_team1" =>$squadre[2],
+                                                "id_team2"=> $squadre[3],
+                                                "score_1"=> 3,
+                                                "score_2"=> 0,
+                                                );
+                        break;
+                    case 2:
+                                        $data5 = array(
+                                            "match_number"  => 3,
+                                            "id_legue" =>$id_lega,
+                                            "id_team1" =>$squadre[1],
+                                            "id_team2"=> $squadre[4],
+                                            "score_1"=> 1,
+                                            "score_2"=> 1,
+                                            );
+                                            $data6 = array(
+                                                "match_number"  => 3,
+                                                "id_legue" =>$id_lega,
+                                                "id_team1" =>$squadre[2],
+                                                "id_team2"=> $squadre[3],
+                                                "score_1"=> 1,
+                                                "score_2"=> 1,
+                                                );
+                        break;
+                    case 3:
+                                        $data5 = array(
+                                            "match_number"  => 3,
+                                            "id_legue" =>$id_lega,
+                                            "id_team1" =>$squadre[1],
+                                            "id_team2"=> $squadre[4],
+                                            "score_1"=> 0,
+                                            "score_2"=> 3,
+                                            );
+                                            $data6 = array(
+                                                "match_number"  => 3,
+                                                "id_legue" =>$id_lega,
+                                                "id_team1" =>$squadre[2],
+                                                "id_team2"=> $squadre[3],
+                                                "score_1"=> 0,
+                                                "score_2"=> 3,
+                                                );
+                        break;
+                                            }
+          //$response =(array) addFootballer($data);
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
            }

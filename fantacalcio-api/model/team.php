@@ -46,6 +46,16 @@ class Team
 
         return $stmt;
     }
+
+    function getArchiveTeamByLegue($id){
+        $query = "SELECT t.id FROM team t
+        where t.id_legue = $id
+        order by t.id asc ";
+    
+                $stmt = $this->conn->query($query);
+    
+                return $stmt;
+    }
     
 }
 ?>
