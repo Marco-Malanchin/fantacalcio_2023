@@ -75,7 +75,8 @@ class Legue
                where id_leg not in (SELECT l.id as id_leg FROM legue l
                 inner join user_legue ul on ul.id_legue = l.id
                 inner join `user` u on u.id = ul.id_user
-               where u.id = $id_user)";
+               where u.id = $id_user)
+               ORDER BY id_leg ASC";
 
             $stmt = $this->conn->query($query);
 

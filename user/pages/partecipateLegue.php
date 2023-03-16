@@ -30,20 +30,26 @@ if(empty($_SESSION['user_id'])){
      include_once dirname(__FILE__) . '/../function/legue.php';
      $id = $_SESSION['user_id'];
      $league_arr = getLegueNotPartecipated($id);
+     $i = 0;
     if (!empty($league_arr) && $league_arr != -1) {
         foreach ($league_arr as $row) {
-            echo ('
-                <div class="card mx-auto" style="width: 18rem;">
-                <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
-                <div class="card-body">
-                <h5 class="card-title">' . $row['name'] . ' </h5>
-                <form method="post">
-                <td>
-                <a href="singleLeguePartecipation.php?id=' .$row['id_leg'].'" class="btn btn-primary">partecipa</a>
-                  </td>
-                </div>
-                </div>
-                ');
+          if( $i++ < 1){
+            continue; //skippo gli elementi che non servono
+        }
+        else{
+          echo ('
+          <div class="card mx-auto" style="width: 18rem;">
+          <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
+          <div class="card-body">
+          <h5 class="card-title">' . $row['name'] . ' </h5>
+          <form method="post">
+          <td>
+          <a href="singleLeguePartecipation.php?id=' .$row['id_leg'].'" class="btn btn-primary">partecipa</a>
+            </td>
+          </div>
+          </div>
+          ');
+        }
         }
     }
     else{
