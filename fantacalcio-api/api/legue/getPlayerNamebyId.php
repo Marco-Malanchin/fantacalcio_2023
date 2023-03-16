@@ -29,7 +29,9 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
         extract($row);
         $arr_player = array(
-            'nickname' => $nickname
+            'nickname' => $nickname,
+            'name' => $name,
+            'score' => $score
         );
         array_push($arr_players, $arr_player);
     }

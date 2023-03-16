@@ -211,6 +211,8 @@ function getLegueByCreator($id_creator){
                     foreach ($legue_data as $legue) {
                         $legue_record = array(
                             'nickname' => $legue['nickname'],
+                            'name' => $legue['name'],
+                            'score' => $legue['score'],
                         );
                         array_push($legue_arr, $legue_record);
                     }
@@ -280,7 +282,6 @@ function checkIdLegue($id){
     $legue_data = $decode_data;
     if (!empty($legue_data)) {
         $legue_arr = array();
-
         foreach ($legue_data as $legue) {
             $legue_record = array(
                 'id_user' => $legue['id_user'],
