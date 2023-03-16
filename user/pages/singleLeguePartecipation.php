@@ -48,24 +48,30 @@ if(empty($_SESSION['user_id'])){
 </ul>
 </div>
 <br>
+<form method="post">
+    <td>
+    <button type="submit" class="btn btn-primary" name="partecipa"<?php echo isset($_POST["partecipa"]) ? "disabled" : "";?>>Partecipa</button>
+    </td>'
 <?php
   $id = $_GET['id'];
   $user = $_SESSION['user_id'];
-    echo('<form method="post">
-    <td>
-    <button type="submit" class="btn btn-primary" name="partecipa">Partecipa</button>
-    </td>');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = array(
           "id_user"  => $_SESSION['user_id'],
           "id_legue" =>  $id,
            );
-           $user_arr = getIdUSER();
-           $legue =  getIdLEGUE();
-        $response =(array)partecipateLegue($data);
-        if (!empty($response)){
-             echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>');
-       }
+           $legue =  checkIdLegue($id);
+        if (array_search($user, array_column($legue, 'id_user')) == TRUE) {   
+            echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, partecipi già a questa lega.</p>');
+        }
+        else{
+          $response =(array)partecipateLegue($data);
+          if (!empty($response)){
+               echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>');
+         }
+        }
+        
+       echo('<a href = "index.php"  class="btn btn-primary" >Torna a pagina home</a>');
     }
 ?>
     </div>

@@ -100,8 +100,9 @@ class Legue
             return $stmt;
            
         }
-        function getUSERLegue(){
-            $query = "SELECT * FROM  user_legue ul";
+        function getUSERbyLegue($id){
+            $query = "SELECT ul.id_user  FROM  user_legue ul
+            where ul.id_legue = $id";
         
                     $stmt = $this->conn->query($query);
         
