@@ -38,11 +38,7 @@ if(empty($_SESSION['user_id'])){
             <th scope="row"></th>
             <form method="post">
               <td>
-                <input class="form-control" type="" id="name" placeholder="Nome nuova legha" name="name"
-                  maxlength="50" required>
-              </td>
-              <td>
-                <input class="form-control" type="" id="team" placeholder="Nome della tua squadra" name="team"
+                <input class="form-control" type="" id="name" placeholder="Nome nuova lega" name="name"
                   maxlength="50" required>
               </td>
               <td>
@@ -55,7 +51,7 @@ include_once dirname(__FILE__) . '\..\function\team.php';
 $err = "";
 $id_creator = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['name'])&& !empty($_POST['team'])) {
+    if (!empty($_POST['name'])) {
       $data = array(
         "name"  => $_POST ['name'],
         "id_creator" =>$id_creator,
@@ -75,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 );
                 adduserLegue($data2);
                 $data3 = array(
-                  "id_user" =>$id_creator,
+                  "id_user" =>"2",
                   "id_legue" =>$id_legue,
-                  "name"  => $_POST ['team'],
+                  "name"  => "admin",
                   );
                   addTeam($data3);
                    }

@@ -68,7 +68,7 @@ class Legue
         }
 
         function getLegueNotPartecipated($id_user){
-            $query = " SELECT id_leg, name from (
+            $query = " SELECT distinct id_leg, name from (
                 SELECT l.name, l.id  as id_leg FROM legue l
                 inner join user_legue ul on ul.id_legue = l.id
                 inner join `user` u on u.id = ul.id_user) il

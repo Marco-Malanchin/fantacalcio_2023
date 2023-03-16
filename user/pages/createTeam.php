@@ -41,7 +41,7 @@ if(empty($_SESSION['user_id'])){
                   maxlength="50" required>
               </td>
               <td>
-                <button type="submit" class="btn btn-success" name="squadra">Conferma</button>
+                <button type="submit" class="btn btn-success" name="squadra"<?php echo isset($_POST["squadra"]) ? "disabled" : "";?>>Conferma</button>
 </td>
             <?php
 include_once dirname(__FILE__) . '\..\function\team.php';
@@ -55,19 +55,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "id_legue" =>$id_legue,
         "name"  => $_POST ['name'],
         );
+        $legue_arr =  getIdTeamLegue();
+        if (array_search($id_legue, array_column($legue_arr, 'id_legue')) == TRUE){
         $legue =  checkIdTeam($id_legue);
-        var_dump($legue);
         if (array_search($id_user, array_column($legue, 'id_user')) == TRUE) {   
             echo ('<p class="text-danger fw-bold mt-3 ms-3">Errore, non puoi creare due squadre nella stessa lega.</p>');
         }
-            else{
-              $response =(array) addTeam($data);
-              if (!empty($response)){
-                   echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
-                       }
+        else{
+          $response =(array) addTeam($data);
+          if (!empty($response)){
+               echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                   }
                }
+              }
+               else{
+                $response =(array) addTeam($data);
+                if (!empty($response)){
+                     echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+                         }
+              }
         }
-        }
+      }
 ?>
         </form>
 
