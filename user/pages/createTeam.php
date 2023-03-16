@@ -68,6 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $response =(array) addTeam($data);
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
+               echo('<br>');
+                     echo('<a href = "singleLegue.php?id=' .$id_legue.'&id_creator=' .$user.'"  class="btn btn-primary" >Torna a pagina lega</a>');
                    }
                }
               }

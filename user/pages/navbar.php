@@ -40,30 +40,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Prodotti
+                        Squadre
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="setProduct.php">Aggiungi Prodotti</a></li>
-                        <li><a class="dropdown-item" href="addTag.php">Aggiungi Tags</a></li>
-                        <!-- <li><a class="dropdown-item" href="">Cancella Tags</a></li> -->
-                        <li><a class="dropdown-item" href="disactiveProduct.php">Disattiva Prodotti</a></li>
-                        <li><a class="dropdown-item" href="reactiveProduct.php">Attiva Prodotti</a></li>
-                        <li><a class="dropdown-item" href="putProductQuantity.php">Cambia Quantità</a></li>
-                        <li><a class="dropdown-item" href="setOfferProduct.php">Cambia Offerte</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Utenti
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="disactiveUser.php">Disattiva Utenti</a></li>
-                        <li><a class="dropdown-item" href="getFavouriteProduct.php">Visualizza Preferiti</a></li>
-                        <li><a class="dropdown-item" href="viewOrder.php">Visualizza Ordini</a></li>
-                        <li><a class="dropdown-item" href="getOrderByUser.php">Visualizza Ordini Singoli</a></li>
-                        <li><a class="dropdown-item" href="setPassword.php">Cambia Password</a></li>
-                        <li><a class="dropdown-item" href="viewCart.php">Visualizza Carrelli</a></li>
+                        <li><a class="dropdown-item" href="setProduct.php">Visualizza Squadre</a></li>
                     </ul>
                 </li>
             </ul>

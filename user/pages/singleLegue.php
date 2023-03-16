@@ -81,6 +81,8 @@ if(empty($_SESSION['user_id'])){
         </div>
         <br>');
         echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
+        echo('<br><br>');
+        echo('<a href="startLegue.php?id='.$id.'" class="btn btn-primary ms-auto p-2">avvia lega</a>');
     }
     else{
         $i = 0; //skippo gli elementi che non servono
@@ -92,11 +94,14 @@ if(empty($_SESSION['user_id'])){
                }
                else{
                foreach ($row as $cell) {
-                   //ogni elemento della riga è finalmente una cella
+                if($cell == $row['id']){
+                    continue; //skippo gli elementi che non servono
+                }
+                else{
+                     //ogni elemento della riga è finalmente una cella
                    echo ('<td>' . $cell . '</td>');
-               }
-               echo ("</tr>\n");
-               }  
+                }
+            }
            }
            }
            echo('</tbody>'); 
@@ -106,6 +111,7 @@ if(empty($_SESSION['user_id'])){
            <br>');
            echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
     }
+}
 ?>
     </div>
 </div>

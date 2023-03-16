@@ -53,10 +53,15 @@ if(empty($_SESSION['user_id'])){
                 continue; //skippo gli elementi che non servono
             }
             else{
-            foreach ($row as $cell) {
-                //ogni elemento della riga è finalmente una cella
-                echo ('<td>' . $cell . '</td>');
-            }
+                foreach ($row as $cell) {
+                    if($cell == $row['id']){
+                        continue; //skippo gli elementi che non servono
+                    }
+                    else{
+                         //ogni elemento della riga è finalmente una cella
+                       echo ('<td>' . $cell . '</td>');
+                    }
+                }
             echo ("</tr>\n");
             }  
         }
