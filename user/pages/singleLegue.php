@@ -67,7 +67,15 @@ if(empty($_SESSION['user_id'])){
 <br>
 <?php
   $id = $_GET['id'];
-    echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+  $user =$_GET['id_creator'];
+    if($user == $_SESSION['user_id']){
+        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
+        echo('<br><br>');
+        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+    }
+    else{
+        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">crea squadra</a>');
+    }
 ?>
     </div>
 </div>

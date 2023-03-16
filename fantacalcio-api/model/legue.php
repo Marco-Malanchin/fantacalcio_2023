@@ -57,7 +57,7 @@ class Legue
         }
         function getLegueUser($id_user)
         {
-            $query = "SELECT name , l.id FROM legue l
+            $query = "SELECT name , l.id, l.id_creator FROM legue l
             inner join user_legue ul on ul.id_legue = l.id
             inner join `user` u on u.id = ul.id_user
              WHERE u.id  = $id_user";
@@ -107,6 +107,15 @@ class Legue
                     $stmt = $this->conn->query($query);
         
                     return $stmt;
+        }
+        function   getIdbyLegue($id){
+            $query = "select l.id_creator from legue l  
+            where l.id  = $id";
+
+            $stmt = $this->conn->query($query);
+        
+                    return $stmt;
+
         }
 }
 ?>

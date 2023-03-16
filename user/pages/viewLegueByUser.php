@@ -37,7 +37,7 @@ if(empty($_SESSION['user_id'])){
                 <img src="../assets/img/logo.png" class="card-img-top" alt="..."> 
                 <div class="card-body">
                 <h5 class="card-title">' . $row['name'] . ' </h5>
-                <a href="singleLegue.php?id=' .$row['id'].' " class="btn btn-primary">visualizza legha</a>
+                <a href="singleLegue.php?id=' .$row['id'].'&id_creator=' .$row['id_creator'].'" class="btn btn-primary">visualizza legha</a>
                 </div>
                 </div>
                 ');

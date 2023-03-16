@@ -14,24 +14,22 @@
     $data = json_decode(file_get_contents("php://input"));
     $legue = new legue($db);
    
-    if (!strpos($_SERVER["REQUEST_URI"], "?id_user=")) // Controlla se l'URI contiene ? id_creator
+    if (!strpos($_SERVER["REQUEST_URI"], "?id=")) // Controlla se l'URI contiene ? id_creator
 {
     http_response_code(400);
     echo json_encode(["messsage" => "Bad request"]);
     die();
 }
 
-$id_user = $_GET['id_user']; 
-$result =$legue->getLegueUser($id_user);
+$id= $_GET['id']; 
+$result =$legue->getIdbyLegue($id);
 
 if (mysqli_num_rows($result) > 0) {
     $arr_legues = array();
     while ($row = $result->fetch_assoc()) {
         extract($row);
         $arr_legue = array(
-            'id' => $id,
-            'name' => $name,
-            "id_creator" => $id_creator
+            'id_creator' => $id_creator,
         );
         array_push($arr_legues, $arr_legue);
     }
