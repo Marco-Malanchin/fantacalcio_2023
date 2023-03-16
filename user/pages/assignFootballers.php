@@ -56,30 +56,21 @@ if(empty($_SESSION['user_id'])){
 
 include_once dirname(__FILE__) . '\..\function\legue.php';
 include_once dirname(__FILE__) . '\..\function\team.php';
+include_once dirname(__FILE__) . '\..\function\footballer.php';
 $err = "";
-$id_creator = $_SESSION['user_id'];
+$id_user = $_SESSION['user_id'];
+$id_team = $_GET['id_team'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['name'])) {
+    if (!empty($_POST['name'])&& !empty($_POST['surname'])&& !empty($_POST['role'])) {
       $data = array(
         "name"  => $_POST ['name'],
         "surname" =>$_POST ['surname'],
         "role" =>$_POST ['role'],
+        "id_team"=> $id_team,
         );
-          $response =(array) addLegue($data);
+          $response =(array) addFootballer($data);
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
-               $id_legue = getLegueByCreator($id_creator);
-               $data2 = array(
-                "id_user"  => $id_creator,
-                "id_legue" =>  $id_legue,
-                );
-                adduserLegue($data2);
-                $data3 = array(
-                  "id_user" =>"2",
-                  "id_legue" =>$id_legue,
-                  "name"  => "admin",
-                  );
-                  addTeam($data3);
            }
         }
       }

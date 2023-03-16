@@ -1,5 +1,5 @@
 <?php
-function addTeam($data)
+function addFootballer($data)
 {
     $url = 'http://localhost/fantacalcio/fantacalcio-api/api/footballer/addFootballer.php';
 
