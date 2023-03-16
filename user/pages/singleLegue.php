@@ -39,45 +39,72 @@ if(empty($_SESSION['user_id'])){
                             <th scope="col">Nome Player</th>
                             <th scope="col">Nome Team</th>
                             <th scope="col">Punteggio</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
     <?php
      include_once dirname(__FILE__) . '/../function/legue.php';
      $id = $_GET['id'];
+     $user =$_GET['id_creator'];
+     $player = $_SESSION['user_id'];
      $league_arr = getPlayerNameByID($id);
-     $i = 0; //skippo gli elementi che non servono
-     if (!empty($league_arr) && $league_arr != -1) {
-        foreach ($league_arr as $row) {
-            echo ('<tr>');
-            if( $i++ < 1){
-                continue; //skippo gli elementi che non servono
-            }
-            else{
-            foreach ($row as $cell) {
-                //ogni elemento della riga è finalmente una cella
-                echo ('<td>' . $cell . '</td>');
-            }
-            echo ("</tr>\n");
-            }  
-        }
-        }
-        echo('</tbody>'); 
-        echo ('</table>');
-?>
-</ul>
-</div>
-<br>
-<?php
-  $id = $_GET['id'];
-  $user =$_GET['id_creator'];
-    if($user == $_SESSION['user_id']){
-        echo('<a href="createTeam.php?id='.$id.' " class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
+     if($user == $player){
+        $i = 0; //skippo gli elementi che non servono
+        if (!empty($league_arr) && $league_arr != -1) {
+           foreach ($league_arr as $row) {
+               echo ('<tr>');
+               if( $i++ < 1){
+                   continue; //skippo gli elementi che non servono
+               }
+               else{
+               foreach ($row as $cell) {
+                if($cell == $row['id']){
+                    continue; //skippo gli elementi che non servono
+                }
+                else{
+                     //ogni elemento della riga è finalmente una cella
+                   echo ('<td>' . $cell . '</td>');
+                }
+               }
+               echo('<td>');
+               echo('<a href="assignFootballers.php?id_team='. $row['id'].'" class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
+               echo('</td>');
+               echo ("</tr>\n");
+               }  
+           }
+           }
+           echo('</tbody>'); 
+           echo ('</table>');
         echo('<br><br>');
+        echo('</ul>
+        </div>
+        <br>');
         echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
     }
     else{
-        echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
+        $i = 0; //skippo gli elementi che non servono
+        if (!empty($league_arr) && $league_arr != -1) {
+           foreach ($league_arr as $row) {
+               echo ('<tr>');
+               if( $i++ < 1){
+                   continue; //skippo gli elementi che non servono
+               }
+               else{
+               foreach ($row as $cell) {
+                   //ogni elemento della riga è finalmente una cella
+                   echo ('<td>' . $cell . '</td>');
+               }
+               echo ("</tr>\n");
+               }  
+           }
+           }
+           echo('</tbody>'); 
+           echo ('</table>');
+           echo('</ul>
+           </div>
+           <br>');
+           echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
     }
 ?>
     </div>

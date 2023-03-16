@@ -214,6 +214,7 @@ function getLegueByCreator($id_creator){
                             'nickname' => $legue['nickname'],
                             'name' => $legue['name'],
                             'score' => $legue['score'],
+                            'id' => $legue['id'],
                         );
                         array_push($legue_arr, $legue_record);
                     }
