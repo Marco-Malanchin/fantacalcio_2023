@@ -49,18 +49,21 @@ if(empty($_SESSION['user_id'])){
      $i = 0; //skippo gli elementi che non servono
      if (!empty($league_arr) && $league_arr != -1) {
         foreach ($league_arr as $row) {
+            echo ('<tr>');
             if( $i++ < 1){
                 continue; //skippo gli elementi che non servono
             }
-            echo ('<tr>');
+            else{
             foreach ($row as $cell) {
                 //ogni elemento della riga è finalmente una cella
                 echo ('<td>' . $cell . '</td>');
             }
-            echo('</tbody>'); 
-            echo ('</table>');
+            echo ("</tr>\n");
             }  
         }
+        }
+        echo('</tbody>'); 
+        echo ('</table>');
 ?>
 </ul>
 </div>
