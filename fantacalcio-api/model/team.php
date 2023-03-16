@@ -56,6 +56,14 @@ class Team
     
                 return $stmt;
     }
-    
-}
+
+    function updateScore($id , $score){
+        $query = " UPDATE team t set t.score = t.score + $score
+          where t.id = $id";
+
+$result = $this->conn->query($query);
+        return $result;
+    }
+
+    }
 ?>
