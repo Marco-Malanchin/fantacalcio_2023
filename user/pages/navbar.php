@@ -33,8 +33,6 @@
                         <li><a class="dropdown-item" href="createLegue.php">Crea Lega</a></li>
                         <li><a class="dropdown-item" href="viewLegueByUser.php">Vedi Leghe</a></li>
                         <li><a class="dropdown-item" href="partecipateLegue.php">Partecipa Leghe</a></li>
-                        <li><a class="dropdown-item" href="addOffer.php">Aggiungi Offerte</a></li>  
-                        <li><a class="dropdown-item" href="addPickup.php">Aggiungi Ritiro</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -43,7 +41,7 @@
                         Squadre
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="setProduct.php">Visualizza Squadre</a></li>
+                        <li><a class="dropdown-item" href="getPlayer.php">Visualizza Squadre</a></li>
                     </ul>
                 </li>
             </ul>

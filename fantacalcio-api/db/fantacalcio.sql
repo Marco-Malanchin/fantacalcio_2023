@@ -53,3 +53,8 @@ alter table user_legue  add constraint fk_user_legue foreign key ( id_user ) ref
 alter table user_legue  add constraint fk_legue_user foreign key ( id_legue ) references legue ( id );
 alter table matches  add constraint fk_matches_team foreign key ( id_team1 ) references team ( id );
 alter table legue add id_creator int not null;
+
+   insert into `user`  (id, email, password, nickname) values (1, "admin@gmail.com", "admin", "admin");
+   insert into legue(id, name, id_creator) VALUES (1, "admin", 1);
+  insert into user_legue (id, id_user, id_legue) values (1,1,1);
+   
