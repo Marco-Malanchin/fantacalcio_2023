@@ -138,4 +138,29 @@ function checkIdTeam($id){
     
         return $response;
     }
+    function getScoreFinal($id){
+        $url = "http://localhost/fantacalcio/fantacalcio-api/api/team/getPlayerScorebyLegue.php?id=" . $id;
+
+        $json_data = file_get_contents($url);
+        if ($json_data != false) {
+            $decode_data = json_decode($json_data, $assoc = true);
+            $legue_data = $decode_data;
+            $legue_arr = array();
+            if (!empty($legue_data)) {
+                foreach ($legue_data as $legue) {
+                    $legue_record = array(
+                        'nickname' => $legue['nickname'],
+                        'name' => $legue['name'],
+                        'score' => $legue['score'],
+                    );
+                    array_push($legue_arr, $legue_record);
+                }
+                return $legue_arr;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
 ?>

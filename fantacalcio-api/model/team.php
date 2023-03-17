@@ -64,6 +64,17 @@ class Team
 $result = $this->conn->query($query);
         return $result;
     }
+    function getPlayerScorebyLegue($id){
+        $query ="SELECT distinct u.nickname,t.name, t.score from
+        team t
+        inner join legue l on t.id_legue = l.id 
+        inner join `user` u on t.id_user = u.id 
+        where l.id  = $id
+        ORDER BY t.score desc limit 4";
 
+        $stmt = $this->conn->query($query);
+        return $stmt;
+       
+    }
     }
 ?>

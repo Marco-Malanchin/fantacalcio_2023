@@ -82,7 +82,7 @@ if(empty($_SESSION['user_id'])){
         <br>');
         echo('<a href="createTeam.php?id=' .$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">crea squadra</a>');
         echo('<br><br>');
-        echo('<a href="startLegue.php?id='.$id.'" class="btn btn-primary ms-auto p-2">avvia lega</a>');
+        echo('<a href="startLegue.php?id='.$id.'&id_creator=' .$user.'" class="btn btn-primary ms-auto p-2">avvia lega</a>');
     }
     else{
         $i = 0; //skippo gli elementi che non servono

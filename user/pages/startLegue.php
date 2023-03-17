@@ -35,7 +35,7 @@ if(empty($_SESSION['user_id'])){
         <br>
         <div class = col-md-4>    
         <form method="post">
-        <button type="submit" class="btn btn-success" name="legha">AVVIA</button>
+        <button type="submit" class="btn btn-success" name="legha"<?php echo isset($_POST["legha"]) ? "disabled" : "";?>>AVVIA</button>
 </div>
             <?php
 
@@ -46,6 +46,7 @@ include_once dirname(__FILE__) . '\..\function\matches.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
 $id_lega = $_GET['id'];
+$id_creator=$_GET['id_creator'];
 $squadre = getidTeambyLegue($id_lega);
 $squadra1 = $squadre[1];
 $squadra2 = $squadre[2];
@@ -679,6 +680,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
            }
+           echo('<p class="text-success fw-bold mt-3 ms-3"> Giornate calcolate, Classifica aggiornata:</p>');
+           $classifica = getScoreFinal($id_lega);
+           echo(' <br><br>
+           <table class="table table-dark table-striped">
+                           <thead>
+                               <tr>
+                                   <th scope="col">Nome Player</th>
+                                   <th scope="col">Nome Team</th>
+                                   <th scope="col">Punteggio</th>
+                                   <th></th>
+                               </tr>
+                           </thead>
+                           <tbody>');
+                           if (!empty($classifica) && $classifica != -1) {
+                            foreach ($classifica as $row) {
+                                echo ('<tr>');
+                                foreach ($row as $cell) {
+                                      //ogni elemento della riga è finalmente una cella
+                                    echo ('<td>' . $cell . '</td>');
+                            }
+                            }
+                            echo('</tbody>'); 
+                            echo ('</table>');
+                        }
+                        echo('<a href = "singleLegue.php?id=' .$id_lega.'&id_creator=' .$id_creator.'"  class="btn btn-primary" >Torna a pagina lega</a>');
         }
 ?>
         </form>
