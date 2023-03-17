@@ -60,6 +60,8 @@ include_once dirname(__FILE__) . '\..\function\footballer.php';
 $err = "";
 $id_user = $_SESSION['user_id'];
 $id_team = $_GET['id_team'];
+$id_creator = $_GET['id_creator'];
+$id_lega = $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name'])&& !empty($_POST['surname'])&& !empty($_POST['role'])) {
       $data = array(
@@ -69,6 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "id_team"=> $id_team,
         );
           $response =(array) addFootballer($data);
+          echo('<td>');
+          echo('<a href = "singleLegue.php?id=' .$id_lega.'&id_creator=' .$id_creator.'"  class="btn btn-primary" >Torna a pagina lega</a>');
+          echo('</td>');
+          echo('</tr>');
+          echo('<tbody>');
           if (!empty($response)){
                echo ('<p class="text-success fw-bold mt-3 ms-3">' . $response['Message'] . '</p>'); 
            }

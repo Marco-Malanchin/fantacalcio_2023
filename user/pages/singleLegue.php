@@ -68,7 +68,7 @@ if(empty($_SESSION['user_id'])){
                 }
                }
                echo('<td>');
-               echo('<a href="assignFootballers.php?id_team='. $row['id'].'" class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
+               echo('<a href="assignFootballers.php?id_team='. $row['id'].'&id_creator=' .$user.'&id=' .$id.'" class="btn btn-primary ms-auto p-2">assegna giocatori</a>');
                echo('</td>');
                echo ("</tr>\n");
                }  
