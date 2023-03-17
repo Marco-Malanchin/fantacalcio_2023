@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 );
                 adduserLegue($data2);
                 $data3 = array(
-                  "id_user" =>"2",
+                  "id_user" =>"1",
                   "id_legue" =>$id_legue,
                   "name"  => "admin",
                   );

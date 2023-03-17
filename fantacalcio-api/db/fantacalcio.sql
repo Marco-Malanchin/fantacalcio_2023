@@ -57,4 +57,5 @@ alter table legue add id_creator int not null;
    insert into `user`  (id, email, password, nickname) values (1, "admin@gmail.com", "admin", "admin");
    insert into legue(id, name, id_creator) VALUES (1, "admin", 1);
   insert into user_legue (id, id_user, id_legue) values (1,1,1);
+  insert into team (id, id_user, id_legue, name, score) values(1,1,1,"admin",0);
    
