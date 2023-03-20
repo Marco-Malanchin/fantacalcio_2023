@@ -689,7 +689,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                    <th scope="col">Nome Player</th>
                                    <th scope="col">Nome Team</th>
                                    <th scope="col">Punteggio</th>
-                                   <th></th>
                                </tr>
                            </thead>
                            <tbody>');
